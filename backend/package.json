@@ -7,6 +7,7 @@
   "license": "ISC",
   "scripts": {
     "start": "nodemon server.js",
+    "postinstall": "chmod +x node_modules/.bin/react-scripts",
     "dev": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,5 +20,8 @@
   "devDependencies": {
     "nodemon": "^3.0.0"
   },
-  "keywords": ["news", "aggregator", "backend", "API"]
+  "keywords": ["news", "aggregator", "backend", "API"],
+  "engines": {
+    "node": "18.x"
+  }
 }
