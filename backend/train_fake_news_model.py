@@ -5,11 +5,11 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import MultinomialNB
 
-# Backend folder ke andar hi hai, toh direct file ka naam likho
+# If inside backend then write name direct
 true_path = "True.csv"
 fake_path = "Fake.csv"
 
-# ✅ Check karo ki files exist karti hai ya nahi
+# ✅ Check for file exists or not
 if not os.path.exists(true_path):
     print(f"❌ File not found: {true_path}")
 if not os.path.exists(fake_path):
@@ -19,11 +19,11 @@ if not os.path.exists(fake_path):
 df_true = pd.read_csv(true_path)
 df_fake = pd.read_csv(fake_path)
 
-# ✅ Label add karo
+# ✅ Add label
 df_true["label"] = "REAL"
 df_fake["label"] = "FAKE"
 
-# ✅ Dono ko combine karo
+# ✅ Combine both
 df = pd.concat([df_true, df_fake])
 
 # ✅ Save merged dataset
@@ -45,11 +45,11 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 model = MultinomialNB()
 model.fit(X_train, y_train)
 
-# 🏆 Save trained model
+# Save trained model
 with open("fake_news_model.pkl", "wb") as model_file:
     pickle.dump(model, model_file)
 
-# 🏆 Save TF-IDF Vectorizer
+# Save TF-IDF Vectorizer
 with open("vectorizer.pkl", "wb") as vec_file:
     pickle.dump(vectorizer, vec_file)
 
